@@ -31,13 +31,18 @@
         background: url('/noise.png');
         opacity: .08;
         will-change: transform;
-        mix-blend-mode: color-dodge;
         position: fixed;
         width: 100vw;
         height: 100vh;
         background-size: 500px 500px;
         pointer-events: none;
         filter: blur(.3px);
+        mix-blend-mode: color-dodge;
+
+        @media(max-width: 700px) {
+            mix-blend-mode: normal;
+            opacity: .03;
+        }
     }
 
     &_video {
@@ -82,7 +87,7 @@
         background: url('/bg.webp');
         background-size: cover;
         background-position: center;
-        filter: blur(20px) brightness(.15);
+        filter: blur(20px) brightness(.10);
     }
 
     &_header {
@@ -144,7 +149,7 @@
             height: 0px;
 
             @media(max-width: 700px) {
-                top: 80vh;
+                top: 85vh;
             }
         }
 
@@ -186,7 +191,7 @@
         top: 105vh;
 
         @media(max-width: 700px) {
-            top: 101vh;
+            top: 95vh;
         }
 
         img {
@@ -194,7 +199,7 @@
             position: relative;
 
             @media(max-width: 700px) {
-                height: 105vh;
+                height: 90vh;
             }
         }
     }
