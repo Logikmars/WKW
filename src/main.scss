@@ -23,6 +23,7 @@
 
         img {
             pointer-events: none;
+            opacity: 1;
         }
     }
 
@@ -30,13 +31,45 @@
         position: fixed;
         top: 0px;
         left: 0px;
-        transition: opacity 500ms;
+        transition: opacity 100ms;
         pointer-events: none;
 
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+        align-content: center;
+        flex-wrap: wrap;
+
         video {
-            min-width: 100vw;
             min-height: 100vh;
+            max-height: 100vh;
+            transition: opacity 300ms;
+            opacity: 0;
+
+            @media (min-aspect-ratio: 2/1) {
+                min-height: none;
+                max-height: none;
+                min-width: 100vw;
+                max-width: 100vw;
+
+            }
         }
+
+        .is-visible {
+            opacity: 1;
+        }
+    }
+
+    &_fone {
+        position: fixed;
+        width: 110vw;
+        height: 110vh;
+        background: url('/bg.webp');
+        background-size: cover;
+        background-position: center;
+        filter: blur(20px);
     }
 
     &_header {
@@ -72,7 +105,8 @@
 
             &:hover {
                 img {
-                    filter: invert(.5);
+                    // filter: invert(.5);
+                    filter: brightness(30);
                 }
             }
         }

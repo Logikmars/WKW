@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './main.scss'
+import Video from './Video';
+import Fone from './Fone';
 
 function App() {
 
@@ -18,71 +20,53 @@ function App() {
     }
   ]
 
-  const [showVideo, setshowVideo] = useState(false);
-
-  const startVideo = () => {
-    if (showVideo) return
-    const video = videoRef.current
-    if (!video) return
-    // Play when loaded; otherwise wait for 'canplay'
-    const playNow = () => {
-      try { video.currentTime = 0 } catch { }
-      video.play().catch(() => { })
-      setshowVideo(true)
-      setTimeout(() => setshowVideo(false), 4500)
-    }
-    if (video.readyState >= 3) {
-      playNow()
-      return
-    } else {
-      const onCanPlay = () => {
-        video.removeEventListener('canplay', onCanPlay)
-        playNow()
-      }
-      video.addEventListener('canplay', onCanPlay, { once: true })
-      try { video.load() } catch { }
-      return
-    }
-  }
-
-  const videoRef = useRef(null)
-
   const appRef = useRef(null);
-  const chelRef = useRef(null);
+  const target = useRef({ x: 0, y: 0 });
+  const current = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMove = e => {
       const { innerWidth, innerHeight } = window;
-      const x = (e.clientX / innerWidth - 0.5) * 5 - 5; // -5..5 vw
-      const y = ((e.clientY / innerHeight - 0.5) * 5 - 5) * .5; // -5..5 vh
-      if (appRef.current) {
-        appRef.current.style.backgroundPosition = `${x}vw ${y}vh`;
-      }
-      if (chelRef.current) {
-        chelRef.current.style.transform = `translate(${-x - 5}vw, ${-y - 2.5}vh)`;
-      }
-
+      target.current.x = (e.clientX / innerWidth - 0.5) * 10; // -5..5 vw
+      target.current.y = (e.clientY / innerHeight - 0.5) * 10 - 5; // -5..5 vh
     };
+
     if (window.innerWidth > 700) {
       window.addEventListener("mousemove", handleMove);
     }
-    return () => window.removeEventListener("mousemove", handleMove);
+
+    let raf;
+    const animate = () => {
+      current.current.x += (target.current.x - current.current.x) * 0.05;
+      current.current.y += (target.current.y - current.current.y) * 0.05;
+
+      if (appRef.current) {
+        appRef.current.style.backgroundPosition =
+          `${current.current.x}vw ${current.current.y}vh`;
+      }
+
+      raf = requestAnimationFrame(animate);
+    };
+    animate();
+
+    return () => {
+      window.removeEventListener("mousemove", handleMove);
+      cancelAnimationFrame(raf);
+    };
   }, []);
+
+  const [playVideo, setplayVideo] = useState(0);
 
   return (
     <>
-      <div className="App" ref={appRef}>
-      </div >
+      <div className='App_fone' ref={appRef}>
+      </div>
       <div className='App_decor free_img'>
-        <div className='App_chelik_wrapper' onClick={startVideo}>
-          <img src="/chelick.webp" ref={chelRef} alt="" />
+        <div className='App_chelik_wrapper' onClick={() => { setplayVideo(Math.random()) }}>
+          <img src="/chelick.webp" alt="" />
         </div>
       </div>
-      <div className='App_video' style={{
-        opacity: showVideo ? 1 : 0
-      }}>
-        <video src="/video.mp4" ref={videoRef} preload="auto" playsInline muted />
-      </div>
+
       <div className='App_header'>
         {
           imgs.map((el, index) => (
@@ -98,6 +82,9 @@ function App() {
           <div className='App_text_top App_text_el'>WON KEEPS</div>
           <div className='App_text_bottom App_text_el'>WONNIN`</div>
         </div>
+      </div>
+      <div className='App_video'>
+        <Video playSignal={playVideo} />
       </div>
 
 

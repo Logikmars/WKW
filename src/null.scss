@@ -143,6 +143,7 @@ textarea {
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    background: #000;
 }
 
 
@@ -153,4 +154,11 @@ body {
 
 img {
     user-select: none;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    /* iOS/Android */
+    -webkit-touch-callout: none;
+    /* запрет долгого тап-меню */
 }
