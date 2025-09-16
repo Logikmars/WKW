@@ -27,6 +27,19 @@
         }
     }
 
+    &_noise {
+        background: url('/noise.png');
+        opacity: .24;
+        will-change: transform;
+        mix-blend-mode: color-dodge;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background-size: 256px 256px;
+        pointer-events: none;
+        filter: blur(.3px);
+    }
+
     &_video {
         position: fixed;
         top: 0px;
@@ -69,7 +82,7 @@
         background: url('/bg.webp');
         background-size: cover;
         background-position: center;
-        filter: blur(20px);
+        filter: blur(20px) brightness(.15);
     }
 
     &_header {

@@ -27,8 +27,8 @@ function App() {
   useEffect(() => {
     const handleMove = e => {
       const { innerWidth, innerHeight } = window;
-      target.current.x = (e.clientX / innerWidth - 0.5) * 10; // -5..5 vw
-      target.current.y = (e.clientY / innerHeight - 0.5) * 10 - 5; // -5..5 vh
+      target.current.x = (e.clientX / innerWidth - 0.5) * 2; // -5..5 vw
+      target.current.y = (e.clientY / innerHeight - 0.5) * 2 - 1; // -5..5 vh
     };
 
     if (window.innerWidth > 700) {
@@ -56,6 +56,18 @@ function App() {
   }, []);
 
   const [playVideo, setplayVideo] = useState(0);
+
+  const [noisePos, setnoisePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setnoisePos({
+        x: Math.floor(Math.random() * 200 - 100),
+        y: Math.floor(Math.random() * 200 - 100),
+      });
+    }, 1000 / 18); // 10 раз в секунду
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <>
@@ -86,7 +98,9 @@ function App() {
       <div className='App_video'>
         <Video playSignal={playVideo} />
       </div>
-
+      <div className='App_noise' style={{
+        backgroundPosition: `${noisePos.x}px ${noisePos.y}px`
+      }}></div>
 
     </>
 
