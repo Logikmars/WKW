@@ -105,6 +105,8 @@ button {
     font-family: 'Montserrat';
     letter-spacing: -0.5px;
     cursor: url('/img/arrow.png'), auto;
+    user-select: none;
+    pointer-events: none;
 
 }
 
@@ -162,10 +164,10 @@ body {
     min-height: 100vh;
     max-height: 100vh;
     background-image: url('./bg.webp');
-    background-size: cover;
+    background-size: 110vw 110vh;
     background-repeat: no-repeat;
-    background-position: center;
-    
+    background-position: -5vw -5vh;
+
 }
 
 
