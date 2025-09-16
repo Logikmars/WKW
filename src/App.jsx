@@ -65,7 +65,7 @@ function App() {
         x: Math.floor(Math.random() * 200 - 100),
         y: Math.floor(Math.random() * 200 - 100),
       });
-    }, 1000 / 18); // 10 раз в секунду
+    }, 1000 / 12);
     return () => clearInterval(id);
   }, []);
 

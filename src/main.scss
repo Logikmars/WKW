@@ -29,13 +29,13 @@
 
     &_noise {
         background: url('/noise.png');
-        opacity: .24;
+        opacity: .08;
         will-change: transform;
         mix-blend-mode: color-dodge;
         position: fixed;
         width: 100vw;
         height: 100vh;
-        background-size: 256px 256px;
+        background-size: 500px 500px;
         pointer-events: none;
         filter: blur(.3px);
     }
