@@ -147,27 +147,7 @@ html {
 
 
 body {
-    width: 100vw;
-    min-height: 100vh;
-    max-height: 100vh;
-    overflow-x: hidden;
-}
-
-
-.App {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: space-between;
-    justify-content: center;
     overflow: hidden;
-    min-height: 100vh;
-    max-height: 100vh;
-    background-image: url('/bg.webp');
-    background-size: 110vw 110vh;
-    background-repeat: no-repeat;
-    background-position: -5vw -5vh;
-
 }
 
 

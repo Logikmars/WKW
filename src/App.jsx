@@ -63,12 +63,16 @@ function App() {
       }
 
     };
-    window.addEventListener("mousemove", handleMove);
+    if (window.innerWidth > 700) {
+      window.addEventListener("mousemove", handleMove);
+    }
     return () => window.removeEventListener("mousemove", handleMove);
   }, []);
 
   return (
-    <div className="App" ref={appRef}>
+    <>
+      <div className="App" ref={appRef}>
+      </div >
       <div className='App_decor free_img'>
         <div className='App_chelik_wrapper' onClick={startVideo}>
           <img src="/chelick.webp" ref={chelRef} alt="" />
@@ -96,7 +100,9 @@ function App() {
         </div>
       </div>
 
-    </div>
+
+    </>
+
   )
 }
 

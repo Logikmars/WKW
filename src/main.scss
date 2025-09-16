@@ -1,4 +1,21 @@
 .App {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-between;
+    justify-content: center;
+    overflow: hidden;
+    min-height: 100vh;
+    max-height: 100vh;
+    min-width: 100vw;
+
+    background-image: url('/bg.webp');
+    background-repeat: no-repeat;
+    background-size: 110vw 110vh;
+    background-position: -5vw -5vh;
+    position: fixed;
+    left: 0px;
+    top: 0px;
 
     &_chelik_wrapper {
         cursor: pointer;
@@ -18,7 +35,7 @@
 
         video {
             min-width: 100vw;
-            min-height: 100vw;
+            min-height: 100vh;
         }
     }
 
@@ -31,10 +48,9 @@
         align-items: center;
         gap: 45px;
         // padding-top: 60px;
-        z-index: 1;
 
         @media(max-height: 700px) {
-            top: 50px;
+            top: 30px;
         }
 
         &_el {
@@ -69,17 +85,20 @@
         justify-content: center;
         flex-wrap: wrap;
         z-index: 2;
-        // margin-top: 20%;
         min-height: fit-content;
 
         &_wrapper {
             display: flex;
             width: 100%;
             position: fixed;
-            top: 95vh;
+            top: 90vh;
             align-items: end;
             align-content: end;
             height: 0px;
+
+            @media(max-width: 700px) {
+                top: 80vh;
+            }
         }
 
 
@@ -116,20 +135,20 @@
     &_decor {
         width: 100% !important;
         align-items: flex-end !important;
-        z-index: 0;
-        position: fixed;
+        position: fixed !important;
         top: 105vh;
+
+        @media(max-width: 700px) {
+            top: 101vh;
+        }
 
         img {
             height: 90vh;
             position: relative;
-            // width: 60vw;
-            // @media(max-width: 1400px){
-            //     width: 80vw;
-            // }
-            // @media(max-width: 900px){
-            //     width: 100vw;
-            // }
+
+            @media(max-width: 700px) {
+                height: 105vh;
+            }
         }
     }
 }
