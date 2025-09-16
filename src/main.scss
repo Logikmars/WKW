@@ -1,0 +1,83 @@
+.App{
+    &_header{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 45px;
+        padding-top: 60px;
+        z-index: 1;
+        @media(max-width: 370px){
+            padding-top: 30px;
+            gap: 25px;
+        }
+        &_el{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            img{
+                width: 100%;
+                cursor: pointer;
+                transition: filter 300ms;
+                @media(max-width: 370px){
+                    width: 60%;
+                }
+            }
+            &:hover{
+                img{
+                    filter: invert(.5);
+                }
+            }
+        }
+    }
+
+
+    &_text{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        z-index: 2;
+        margin-top: 20%;
+        &_el{
+            font-family: 'Inter';
+            font-weight: 900;
+            font-size: 88px;
+            line-height: 90px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            @media(max-width: 600px){
+                font-size: 60px;
+            }
+            @media(max-width: 400px){
+                font-size: 32px;
+                line-height: 50px;
+            }
+        }
+        &_bottom{
+            color: #F9D917;
+        }
+    }
+
+
+
+    &_decor{
+        width: 100% !important;
+        align-items: flex-end !important;
+        z-index: 0;
+        img{
+            width: 60vw;
+            @media(max-width: 1400px){
+                width: 80vw;
+            }
+            @media(max-width: 900px){
+                width: 100vw;
+            }
+        }
+    }
+}
